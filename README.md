@@ -1,5 +1,5 @@
 # Headlines
-# This Priject where created by: Ali Orabi (aliorabi0@gmail.com)
+# created by: Ali Orabi (aliorabi0@gmail.com)
 RSS-headlines News
 
 # Description
