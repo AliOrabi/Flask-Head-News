@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html data-lt-installed="true" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>© HEAD-NEWS</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">© HEAD-NEWS</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <!---->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Our Sources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+    </nav>
+    <main role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3" style="padding: 50px 0px 0px 0px;">Hello, world!</h1>
+                <div class="row">
+                    <p class="col">
+                        The exchange rate and currency conversion data are consistent and reliable.
+                        Real-time weather data based on your geographic location, and anywhere in the world.
+                        The latest news headlines that interest you, constantly updated.
+                    </p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h2>Current weather</h2>
+                            <form action="">
+                                <input type="text" name="city" placeholder="weather search">
+                                <input type="submit" value="Submit">
+                            </form>
+                            <p>City: <b>{{weather.city}}, {{weather.country}} </b> {{weather.description}} | {{weather.temperature}}&#8451;</p>
+                        </div>
+                        <div class="col">
+                            <h2>Currency</h2>
+                            <div>
+                                <form action="">
+                                    From: <select name="currency_from">
+                                            {% for currency in currencies %}
+                                                <option value="{{currency}}"
+                                                {{'selected="selected"' if currency_from==currency}}>
+                                                {{currency}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    To:   <select name="currency_to">
+                                            {% for currency in currencies %}
+                                                <option value="{{currency}}"
+                                                {{'selected="selected"' if currency_to==currency}}>
+                                                {{currency}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <input type="submit" value="Submit">
+                                </form>
+                            </div>
+                            {{currency_from}} = {{currency_to}} {{rate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="container">
+                    <h2>Headlines</h2>
+                    <form action="">
+                        <input type="text" name="publication" placeholder="search" />
+                        <input type="submit" value="Submit" />
+                    </form><br>
+                    {% for article in articles %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="card bg-light mb-3" style="margin-bottom: 10px;">
+                                <div class="card-header"><h5 class="card-title"><a href="{{article.link}}">{{article.title}}</a></h5>
+                                    <i class="card-date">{{article.published}}</i>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{article.summary}}</p>
+                                    <a class="btn btn-primary" style="float: right;" href="{{article.link}}">Read Oreginal</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+        </div> 
+        <!-- /container -->
+    </main>
+    
+    <footer class="container">
+        <p>© HEAD-NEWS 2021</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>
